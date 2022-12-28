@@ -1,0 +1,160 @@
+// Define a color variable
+@primary-color: #2de3e6dc;
+
+@font-face {
+  font-family: 'neon_retro';
+  src: url('../fonts/neon-retro.woff2') format('woff2'),
+       url('../fonts/neon-retro.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-stack: Helvetica, sans-serif;
+@name-font: neon_retro;
+
+.box-shadow(@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  -webkit-box-shadow: @x @y @blur @color;
+     -moz-box-shadow: @x @y @blur @color;
+          box-shadow: @x @y @blur @color;
+}
+
+body {
+  background: #0D343A;
+  background: linear-gradient(to bottom, rgba(13,52,58,1), #000000);
+  font-family: @font-stack;
+  overflow: hidden;
+}
+
+.app {
+  text-align: center;
+  height: 100vw;
+}
+
+.app {
+  header{
+    display: flex;
+    flex-direction: row;
+    padding: 7px 25px;
+    color: white;
+  }
+}
+  @media screen and (min-width: 768px) {
+    .app {
+      .about-me {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 2fr 1fr;
+        grid-template-rows: 0.5fr repeat(4, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        margin: 0 auto;
+        justify-items: center;
+        align-items: center;
+        .neon-frame {
+          grid-row-start: 3;
+          grid-row-end: 4;
+          grid-column-start: 2;
+          grid-column-end: 3;
+        }
+      }
+    }
+  }   
+  .about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 5vw auto;
+    width: 100%;
+    height: 100%;
+    .neon-frame {
+      margin: 0 auto;
+      border: 2px solid @primary-color; //border: 9px double @primary-color;
+      border-radius: 10px;
+      width: fit-content;
+      height: auto;
+      box-shadow: 0 0 15px #9ecaed;
+      padding: 0 2vw;
+      .name-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin: 7% 0;
+        .my-name {
+          font-family: @name-font;
+          font-size: calc(30px + 4vw);
+          letter-spacing: 8px;
+          color: #dddbdb;
+          //text-shadow:
+            //0 0 18px #dddbdb,
+            //0 0 48px @primary-color;
+          animation: flicker 1.5s infinite alternate;
+        }
+      }
+      .my-role {
+        font-family: @name-font;
+        font-size: calc(12px + 1.1vw);
+        letter-spacing: 4px;
+        color: #dddbdb;
+        margin-top: 10px;
+        text-shadow:
+          0 0 18px #dddbdb,
+          0 0 48px @primary-color;
+      }
+    }
+  }
+  .right-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  
+    align-items: center;
+    margin: 50px auto;
+  }
+  @media only screen and (min-width: 768px){
+    .right-menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      grid-row-start: 3;
+      grid-row-end: 4;
+      grid-column-start: 3;
+      grid-column-end: 4;
+      margin: 20px 60px;
+  }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: @primary-color; }
+}
+
+@keyframes flicker {
+    
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      
+    text-shadow:
+    0 0 18px #dddbdb,
+    0 0 48px @primary-color;
+  
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+  }    
+}
+
+@keyframes flicker2 {
+    
+  22%, 57%, 100% {
+      
+    text-shadow:
+    0 0 18px #dddbdb,
+    0 0 48px @primary-color;
+  
+  }
+  
+  0%, 20%, 24%, 58% {        
+      text-shadow: none;
+  }    
+}
